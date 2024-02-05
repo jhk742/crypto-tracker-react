@@ -27,6 +27,7 @@ export default function Home() {
                         name: coin.item.name,
                         image: coin.item.large,
                         priceBtc: coin.item.price_btc,
+                        price: coin.item.data.price,
                         price_change_percentage_24h: coin.item.data.price_change_percentage_24h
                     }
                 })
@@ -37,6 +38,8 @@ export default function Home() {
             }
         })()
     }, [])
+
+    console.log(coins)
 
     useEffect(() => {
         //handles query changes
@@ -72,7 +75,7 @@ export default function Home() {
     return (
         <div className="Home">
             <header>
-                <h1>COINS COINS COINS</h1>
+                <h1>Coins!</h1>
             </header>
             <div className="coin--search">
                 <h2>Search for a coin</h2>
@@ -85,12 +88,12 @@ export default function Home() {
                         <Link to={`/${coin.id}`} className="coin" key={coin.id}>
                             <div className="coin--desc">
                                 <img src={coin.image}></img>
-                                <p>{coin.name}</p>
+                                <span>{coin.name}</span>
                             </div>
                             {prices && (
                                 <div className="coin--prices">
-                                    <p>{coin.priceBtc}</p>
-                                    <p>({coin.price_change_percentage_24h.usd} USD)</p>
+                                    <span>{coin.priceBtc}</span>
+                                    <span>({coin.price} USD)</span>
                                 </div>
                             )}
                         </Link>

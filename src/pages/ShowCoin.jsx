@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import '../styles/ShowCoin.css'
@@ -53,50 +53,66 @@ export default function ShowCoin() {
     return (
         <div className="Showcoin">
             <header>
+                <Link to="/" className="btn--back">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="currentColor" 
+                        class="w-6 h-6">
+                        <path 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                </Link>
                 <img src={coinData.image}></img>
                 <h1>{coinData.name} ({coinData.symbol})</h1>
             </header>
-            <AreaChart
-                width={800}
-                height={350}
-                data={graphData}
-                margin={{
-                    top: 10,
-                    right: 30,
-                    left: 0,
-                    bottom: 0,
-                }}
-                >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="Date" />
-                <YAxis />
-                <Tooltip />
-                <Area type="monotone" dataKey="Price" stroke="#8884d8" fill="#8884d8" />
-            </AreaChart>
-            <div className="coin--info">
-                <div>
-                    <h3>Market Cap Rank</h3>
-                    <span>{coinData.market_cap_rank}</span>
-                </div>
-                <div>
-                    <h3>24H High</h3>
-                    <span>${coinData.high_24h.usd}</span>
-                </div>
-                <div>
-                    <h3>24H Low</h3>
-                    <span>${coinData.low_24h.usd}</span>
-                </div>
-                <div>
-                    <h3>Circulating Supply</h3>
-                    <span>${coinData.circulating_supply}</span>
-                </div>
-                <div>
-                    <h3>Current Price</h3>
-                    <span>${coinData.current_price.usd}</span>
-                </div>
-                <div>
-                    <h3>1Y Change</h3>
-                    <span>{coinData.price_change_percentage_1y}%</span>
+            <div className="coin--meta--info">
+                <AreaChart
+                    width={800}
+                    height={350}
+                    data={graphData}
+                    margin={{
+                        top: 10,
+                        right: 30,
+                        left: 0,
+                        bottom: 0,
+                    }}
+                    >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="Date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="Price" stroke="#8884d8" fill="#8884d8" />
+                </AreaChart>
+                <div className="coin--info">
+                    <div>
+                        <h3>Market Cap Rank</h3>
+                        <span>{coinData.market_cap_rank}</span>
+                    </div>
+                    <div>
+                        <h3>24H High</h3>
+                        <span>${coinData.high_24h.usd}</span>
+                    </div>
+                    <div>
+                        <h3>24H Low</h3>
+                        <span>${coinData.low_24h.usd}</span>
+                    </div>
+                    <div>
+                        <h3>Circulating Supply</h3>
+                        <span>${coinData.circulating_supply}</span>
+                    </div>
+                    <div>
+                        <h3>Current Price</h3>
+                        <span>${coinData.current_price.usd}</span>
+                    </div>
+                    <div>
+                        <h3>1Y Change</h3>
+                        <span>{coinData.price_change_percentage_1y}%</span>
+                    </div>
                 </div>
             </div>
         </div>
