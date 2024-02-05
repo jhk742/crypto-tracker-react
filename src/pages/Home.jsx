@@ -39,8 +39,6 @@ export default function Home() {
         })()
     }, [])
 
-    console.log(coins)
-
     useEffect(() => {
         //handles query changes
         (async () => {
