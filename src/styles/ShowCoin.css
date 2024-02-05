@@ -1,0 +1,24 @@
+.Showcoin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Showcoin img {
+    margin-right: 20px;
+    width: 40px;
+    height: auto;
+}
+
+.coin--info {
+    display: flex;
+    flex-direction: column;
+}
+
+.coin--info div {
+    margin-bottom: 10px;
+}
+
+.coin--info span {
+    font-size: 1.1rem;
+}
