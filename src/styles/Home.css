@@ -40,7 +40,7 @@
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-        background-color: #555555;
+        background-color: #FFA500;
         color: #ffffff;
     }
 }
